@@ -1,24 +1,26 @@
 package Product.Handphone;
 
-import Helper.CSVDownload;
+
+import com.opencsv.CSVWriter;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
-import com.fasterxml.jackson.core.JsonGenerator;
-import com.fasterxml.jackson.dataformat.csv.CsvMapper;
-import com.fasterxml.jackson.dataformat.csv.CsvSchema;
-import org.apache.commons.codec.binary.StringUtils;
 
+import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.*;
 
-public class HandphoneImpl {
+public class HandphoneService {
 
     private static final String URLSTR = "https://www.tokopedia.com/search?st=product&q=";
     private static final String CATEGORY = "handphone";
     private static final String EMPTY = "";
+    private static final String EXT = ".csv";
+
+    private static String[] header = {"Name", "Description", "Image Link", "Price", "Rating", "Name Merchant"};
 
     public List getListProductFromHTML() throws IOException {
         Document document = null;
@@ -61,4 +63,33 @@ public class HandphoneImpl {
 
         return listHandphone;
     }
+
+    public void writeCSVFile(List csvData)  {
+        long currentTime= Calendar.getInstance().getTimeInMillis();
+        System.out.println(currentTime);
+
+        File file = new File(CATEGORY+"_"+currentTime+EXT);
+        try {
+
+            FileWriter outputfile = new FileWriter(file);
+            CSVWriter writer = new CSVWriter(outputfile);
+            List<String[]> listItems = new ArrayList<>();
+
+            //Header
+            listItems.add(header);
+            for(int i =0; i<csvData.size(); i++)
+            {
+                HandphoneEntity entity = (HandphoneEntity) csvData.get(i);
+                if(entity!=null) {
+                    listItems.add(new String[]{entity.getName(), entity.getDescription(), entity.getLinkImage(), String.valueOf(entity.getPrice()), String.valueOf(entity.getRating()), entity.getMerchant()});
+                }
+            }
+            writer.writeAll(listItems);
+            writer.close();
+        }catch (Exception e)
+        {
+            e.getMessage();
+        }
+    }
+
 }

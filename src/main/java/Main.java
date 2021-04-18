@@ -1,18 +1,17 @@
-import Helper.CSVDownload;
-import Product.Handphone.HandphoneImpl;
+
+import Product.Handphone.HandphoneService;
 
 import java.util.List;
 
 public class Main {
-    private static CSVDownload csvDownload;
 
     public static void main(String[] args) throws Exception {
 
-        csvDownload = new CSVDownload();
-        HandphoneImpl handphoneImpl = new HandphoneImpl();
-        List dataProduct = handphoneImpl.getListProductFromHTML();
 
-        csvDownload.writeCSVFile(dataProduct);
+        HandphoneService handphoneService = new HandphoneService();
+        List dataProduct = handphoneService.getListProductFromHTML();
+
+        handphoneService.writeCSVFile(dataProduct);
 
 
     }
