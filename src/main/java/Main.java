@@ -10,7 +10,8 @@ public class Main {
 
         csvDownload = new CSVDownload();
         HandphoneImpl handphoneImpl = new HandphoneImpl();
-       List dataProduct =    handphoneImpl.getListProductFromHTML();
+        List dataProduct = handphoneImpl.getListProductFromHTML();
+
         csvDownload.writeCSVFile(dataProduct);
 
 

@@ -45,16 +45,16 @@ public class HandphoneImpl {
 
             description = "asd";
 
-            link = e.getElementsByClass("css-1ehqh5q").select("a").attr("href");
-
-            // String pricesStr = e.getElementsByClass("css-rhd610").text().substring(2);
+            link = e.getElementsByClass("css-1ehqh5q").select("img").attr("src");
             pricesStr = String.valueOf((e.getElementsByClass("css-rhd610").text().substring(2).replace(".","")).trim());
             price = new BigDecimal(pricesStr);
             System.out.println(pricesStr);
             rating = e.getElementsByClass("css-etd83i").text() ;
+            System.out.println(e.getAllElements());
+
             merchant = e.getElementsByClass("css-1pznt2j").text();
             //Add Entity
-            HandphoneEntity handphoneEnt = new HandphoneEntity(name, description, link,price, rating,  "garmastore");
+            HandphoneEntity handphoneEnt = new HandphoneEntity(name, description, link,price, rating,  "Store");
             listHandphone.add(handphoneEnt);
         }
 

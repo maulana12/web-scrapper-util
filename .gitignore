@@ -2,3 +2,6 @@
 .idea/vcs.xml
 .idea/vcs.xml
 .idea/vcs.xml
+target/classes/Helper/CSVDownload.class
+target/classes/Main.class
+target/classes/Product/Handphone/HandphoneImpl.class
