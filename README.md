@@ -1,12 +1,12 @@
 ## **Web Scrapper from Tokopedia**
 Utility tool to extract data from Tokopedia site(Handphone Product)
 
-##Requirement
+## **Requirement**
 - Java 1.8
 - Maven
 
-##Build 
+## **Build**
 mvn clean install
 
-##**Run** 
+## **Run** 
 java -jar {jar file}
