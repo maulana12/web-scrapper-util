@@ -1,19 +1,27 @@
-import Helper.CSVDownload;
-import Product.Handphone.HandphoneImpl;
 
+import Product.Handphone.HandphoneService;
+
+import javax.swing.*;
+import java.io.File;
+import java.io.IOException;
 import java.util.List;
 
 public class Main {
-    private static CSVDownload csvDownload;
 
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) {
+       JFileChooser f = new JFileChooser();
+        f.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+        f.showSaveDialog(null);
 
-        csvDownload = new CSVDownload();
-        HandphoneImpl handphoneImpl = new HandphoneImpl();
-        List dataProduct = handphoneImpl.getListProductFromHTML();
-
-        csvDownload.writeCSVFile(dataProduct);
-
-
+      HandphoneService handphoneService = new HandphoneService();
+        File path = f.getSelectedFile();
+        System.out.println(path.getPath());
+        List dataProduct = null;
+        try {
+            dataProduct = handphoneService.getListProductFromHTML();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        handphoneService.writeCSVFile(dataProduct,path);
     }
 }

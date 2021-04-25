@@ -5,3 +5,11 @@
 target/classes/Helper/CSVDownload.class
 target/classes/Main.class
 target/classes/Product/Handphone/HandphoneImpl.class
+target/classes/Helper/CSVDownload.class
+target/classes/Main.class
+target/classes/Product/Handphone/HandphoneImpl.class
+target/classes/Product/Handphone/HandphoneService.class
+target/classes/Helper/CSVDownload.class
+target/classes/Main.class
+target/classes/Product/Handphone/HandphoneImpl.class
+*.class
